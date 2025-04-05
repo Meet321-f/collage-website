@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS Patel College Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Premium Colors */
+    :root {
+      --primary-color: #003366; /* Deep Blue */
+      --secondary-color: #ffcc00; /* Gold */
+      --accent-color: #e6b800; /* Darker Gold */
+      --background-color: #f9f9f9; /* Light Gray */
+      --text-color: #333; /* Dark Gray */
+      --white: #ffffff; /* White */
+    }
+
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--primary-color);
+      padding: 10px 20px;
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo h1 {
+      margin: 0;
+      font-size: 24px;
+      color: var(--white);
+    }
+
+    nav .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav .nav-links li {
+      margin-left: 20px;
+    }
+
+    nav .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav .nav-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('https://via.placeholder.com/1500x800'); /* Add your college image here */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .hero-content img {
+      width: 150px; /* Adjust the size of the image */
+      height: auto;
+      margin-bottom: 20px; /* Space between image and heading */
+      border-radius: 10px; /* Optional: Add rounded corners */
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .hero-content p {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: var(--white);
+    }
+
+    .hero-content .btn {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-content .btn:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Sections Below Hero */
+    .sections {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px 20px;
+      background-color: var(--background-color);
+    }
+
+    .section {
+      flex: 1;
+      margin: 0 20px;
+      padding: 20px;
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .section p {
+      font-size: 16px;
+      color: var(--text-color);
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section ul li {
+      margin: 10px 0;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer .social-icons {
+      margin-top: 10px;
+    }
+
+    footer .social-icons a {
+      color: var(--white);
+      margin: 0 10px;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-icons a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* About Us Page Styles */
+    .about {
+      padding: 20px;
+      background-color: white;
+      margin: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none; /* Hidden by default */
+    }
+
+    .about h2 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .about h3 {
+      color: var(--secondary-color);
+    }
+
+    .about p {
+      line-height: 1.8;
+      color: var(--text-color);
+    }
+
+    .about ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .about table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .about table, .about th, .about td {
+      border: 1px solid #ddd;
+    }
+
+    .about th, .about td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .about th {
+      background-color: #f2f2f2;
+    }
+
+    /* Courses Page Styles */
+    .courses {
+      padding: 20px;
+      background-color: white;
+      margin: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none; /* Hidden by default */
+    }
+
+    .courses h2 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .courses p {
+      line-height: 1.8;
+      color: var(--text-color);
+    }
+
+    .courses table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .courses table, .courses th, .courses td {
+      border: 1px solid #ddd;
+    }
+
+    .courses th, .courses td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .courses th {
+      background-color: #f2f2f2;
+    }
+
+    /* Registration Form Styles */
+    .registration {
+      padding: 20px;
+      background-color: white;
+      margin: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none; /* Hidden by default */
+    }
+
+    .registration h2 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .registration form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .registration label {
+      font-weight: bold;
+    }
+
+    .registration input, .registration select, .registration textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .registration button {
+      padding: 10px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .registration button:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Facilities Page Styles */
+    .facilities {
+      padding: 20px;
+      background-color: white;
+      margin: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none; /* Hidden by default */
+    }
+
+    .facilities h2 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .facilities ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .facilities ul li {
+      margin: 10px 0;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animated {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-content {
+        flex-direction: column;
+      }
+
+      .courses table, .registration form, .facilities ul {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    /* Improved Contact Us Section CSS */
+    .contact-page {
+      padding: 40px 20px;
+      background-color: var(--white);
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none; /* Hidden by default */
+    }
+
+    .contact-page h2 {
+      font-size: 36px;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-page p {
+      font-size: 18px;
+      color: var(--text-color);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .top-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .map-container {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container h3 {
+      font-size: 24px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .contact-details {
+      flex: 1;
+      min-width: 300px;
+      background-color: var(--background-color);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-details p {
+      font-size: 16px;
+      color: var(--text-color);
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .contact-details strong {
+      color: var(--primary-color);
+    }
+
+    .contact-details a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-details a:hover {
+      color: var(--accent-color);
+    }
+
+    #contactForm {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: var(--background-color);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #contactForm label {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      color: var(--text-color);
+      background-color: var(--white);
+      transition: border-color 0.3s ease;
+    }
+
+    #contactForm input:focus,
+    #contactForm textarea:focus {
+      border-color: var(--secondary-color);
+      outline: none;
+    }
+
+    #contactForm textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    #contactForm button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #contactForm button:hover {
+      background-color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .top-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .map-container,
+      .contact-details {
+        width: 100%;
+        min-width: auto;
+      }
+
+      .contact-page h2 {
+        font-size: 28px;
+      }
+
+      .contact-page p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">
+      <h1>VS Patel College Portal</h1>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showHome()">Home</a></li>
+      <li><a href="#" onclick="showAbout()">About Us</a></li>
+      <li><a href="#" onclick="showCourses()">Courses</a></li>
+      <li><a href="#" onclick="showFacilities()">Facilities</a></li>
+      <li><a href="#" onclick="showRegistration()">Registration</a></li>
+      <li><a href="#" onclick="showContact()">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Page Content -->
+  <div id="home-page">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <img src="https://via.placeholder.com/150" alt="VS Patel College Image">
+        <h1>Welcome to VS Patel College Portal</h1>
+        <p>Empowering students for a brighter future.</p>
+        <a href="#" onclick="showAbout()" class="btn">Learn More</a>
+      </div>
+    </section>
+
+    <!-- Sections Below Hero -->
+    <div class="sections">
+      <!-- Vision Section -->
+      <div class="section">
+        <h2>Vision</h2>
+        <p>Our vision is to be a leading institution that fosters innovation, creativity, and excellence in education.</p>
+        <ul>
+          <li>Student-centered learning</li>
+          <li>Global perspective</li>
+          <li>Lifelong success</li>
+        </ul>
+      </div>
+
+      <!-- Mission Section -->
+      <div class="section">
+        <h2>Mission</h2>
+        <p>Our mission is to provide quality education and create opportunities for students to achieve their full potential.</p>
+        <ul>
+          <li>Academic excellence</li>
+          <li>Community engagement</li>
+          <li>Personal growth</li>
+        </ul>
+      </div>
+
+      <!-- News & Events Section -->
+      <div class="section">
+        <h2>News & Events</h2>
+        <p>Stay updated with the latest happenings at our college.</p>
+        <ul>
+          <li>Annual Sports Day - 15th October</li>
+          <li>Cultural Fest - 20th November</li>
+          <li>Workshop on AI - 5th December</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Us Page Content -->
+  <div id="about-page" class="about animated">
+    <h2>ABOUT</h2>
+    <!-- History Section -->
+    <div>
+      <h3>History</h3>
+      <p>
+        With a graceful charity of rupees 2 lacs (in 1960 A.D) donated by his highness Shri Vitthalbhai Shivabhai Patel, V.S. Patel College of Arts & Science, Bilimora was started on 15th June 1961. Because of unavailability of infrastructure, 4 classes which included 2 of Science previous and the other 2 of inter Arts were inaugurated by late Shri Thakorbhai Manibhai Desai at Sir J.J. Mehta High School, Bilimora. The trustees of Sir J.J. Mehta High School offered this intermediate provision without any expectation of monetary remuneration.
+      </p>
+      <p>
+        The proposed college got an affiliation of Gujarat University, Ahmedabad. After that, Shri Naushir Manchersha Bilimoria donated a piece of vast land on Chikhli-Bilimora road, for a new building of V.S. Patel College, after the name of his father late Manchersha Burjorji Mengusi, where presently the whole campus is named as Mengusi Park.
+      </p>
+      <p>
+        The foundation stone of the new college building was laid down by the Chief Minister of Gujarat State at that time, late Shri Hitendrabhai Desai. The college, which was started with merely four classes, has now bulged up into a big college comprising various sophisticated, well-equipped departments glorified with well-trained subjective teachers and vast, well-furnished classrooms. Beside the main building, the college comprises a chemistry laboratory for postgraduate courses, which was developed by the graceful charity of Shri Kantidev Jethabhai Patel and Shri Kanubhai Zaverbhai Patel (BIPICO industry, Bilimora).
+      </p>
+      <p>
+        The principal courses like Hindi, Gujarati, and Economics are offered at an undergraduate level for a bachelor's degree, which also includes Psychology and Statistics as subsidiary subjects. At the postgraduate level, Hindi is offered to the students of the Arts faculty.
+      </p>
+      <p>
+        Similarly, the principal courses like Chemistry, Mathematics, Statistics & Physics (Self Financed) are offered at the graduate level, and Chemistry is offered at the postgraduate level. Along with this, Physics, Botany, and Statistics are offered as subsidiary subjects to the science students at the graduate level.
+      </p>
+      <p>
+        Till date, many of the staff faculties have published their research and popular articles in various national & international journals. Some of them have also represented the college on television and radio.
+      </p>
+      <p>
+        With a noble aspect of developing innovative talent among the students of the college, we are publishing a yearly magazine called TRIVENI, where the students who come from different social, cultural & educational backgrounds reflect their ingenuity in the form of research and artistic articles.
+      </p>
+      <p>
+        The authorities, including teaching and non-teaching staff, are making continuous efforts to imbibe and upsurge a notion for social welfare among the students through various schemes like National Cadet Corps, National Service Scheme, Planning Forum, etc. As and when the need from the various sections of society, especially during natural calamities like floods, earthquakes, epidemics, etc., have arisen, these cells have proved to be efficient.
+      </p>
+      <p>
+        This institution has hosted many conferences, seminars & sports events of district, university, and state levels.
+      </p>
+      <p>
+        And last but not least, our college, which has been continuously trailing the path for its all-round betterment, would have been next to impossible without the motherly care graced from our respectable & profusely respectable Principal. They have proved themselves to be the stakeholders in each and every aspect, and for the all-round development of our college.
+      </p>
+    </div>
+
+    <!-- Management Section -->
+    <div>
+      <h3>Management</h3>
+      <p>
+        <strong>Structure of Bilimora Vibhag Kelvani Mandal</strong>
+      </p>
+      <p>
+        The management of V.S. Patel College of Arts & Science is governed by the Bilimora Vibhag Kelvani Mandal, which oversees the administration and development of the institution. The Mandal ensures that the college adheres to its mission of providing quality education and fostering innovation.
+      </p>
+    </div>
+
+    <!-- Principal's Message Section -->
+    <div>
+      <h3>Principal's Message</h3>
+      <p>
+        <strong>Dr. Arvind R. Bajaj</strong>
+      </p>
+      <p>
+        Dear students and all other stakeholders: I am greatly honored to be associated with the field of education. Education is universally recognized as a fundamental building block for human development and one of the strongest instruments for reducing poverty. Our Education is not measured by how many degrees or diplomas we hold or how many exams we passed but as the essential requisite for a Happy, Peaceful and Progressive Life.
+      </p>
+      <p>
+        The years that one spends in College, between school and the larger responsibilities of life, are the most magical years in the life of any individual. It is a time of growth, of change, and of realizing one’s potential. Moving in the right direction, making the right choices and laying a firm foundation will ensure a vibrant and productive future. V.S. Patel College promises to provide as many facilities as possible for the full development of both, the psychological as well as the intellectual development of its students.
+      </p>
+      <p>
+        The college has an excellent infrastructure that includes computer laboratories, free internet, a library with computerized catalogue and issue systems, a seminar hall furnished with projection systems, airy and spacious classrooms, renovated science laboratories along with other amenities including a placement cell.
+      </p>
+      <p>
+        I hope you will be among the privileged to be our fellow traveler in our journey of discovery and capacity building. I extend my best wishes to you for fulfilling your aspiration…. Success is ten percent inspiration and ninety percent perspiration.
+      </p>
+    </div>
+
+    <!-- Vision & Mission Section -->
+    <div>
+      <h3>Vision & Mission</h3>
+      <p>
+        <strong>OUR VISION & MISSION</strong>
+      </p>
+      <h4>Vision</h4>
+      <ul>
+        <li>Being Student Centered And Not System Centered.</li>
+        <li>Getting Out From Rigid Framework Accepting Flexible Framework.</li>
+        <li>Not Planning For Top But Starting From Root As We Want To Grow.</li>
+        <li>Not Being Sectional But Integrated.</li>
+      </ul>
+      <h4>Mission</h4>
+      <ul>
+        <li>To Impart Educational Opportunity To Students Of Deprived, Remote And Sparsely Located Areas.</li>
+        <li>To Impart Education Without Discrimination Of Cast Creed And Community.</li>
+        <li>We Aim At Self – Development Of Students. We Strive To Make Them Responsible And Discipline Citizens Of Nation.</li>
+        <li>We Reflect That Education Is Subservient To Intellect And If It Deviates From Its Source It Can Only Have A Distractive Character Similar To Corrosive Acid Which Destroys Organic Unity Of Beings And Things.</li>
+        <li>We Inculcate In Our Students The Basic Value That Knowledge Governs Ignorance.</li>
+      </ul>
+    </div>
+
+    <!-- List of Principals -->
+    <div>
+      <h3>List of Principals</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name of Principal</th>
+            <th>Qualification</th>
+            <th>Tenure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Shri Dinkarrai G. Vashi</td>
+            <td>M.Sc. (Mumbai), M.Sc. (London)</td>
+            <td>May 1961 To June 1966</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Shri N.R. Trivedi</td>
+            <td>B.A., M.A. (Mumbai)</td>
+            <td>Dec 1966 To Aug 1968</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Dr. M.R. Trivedi</td>
+            <td>M.Sc., Gold Medalist</td>
+            <td>June 1969 To June 1988</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Shri G.C. Patel</td>
+            <td>M.Sc., M.Phil</td>
+            <td>July 1988 To June 1997</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Shri D.B. Bhavsar</td>
+            <td>M.Sc., M.Phil</td>
+            <td>Aug 1997 To June 2003</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Dr. P.S. Desai</td>
+            <td>M.Sc., M.Phil, PhD</td>
+            <td>Feb 2004 To Jan 2007</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Dr. M.N. Vashi</td>
+            <td>M.Sc., PhD</td>
+            <td>Jan 2008 To Oct 2016</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Prof. Dipesh B. Patel</td>
+            <td>M.Sc.</td>
+            <td>Nov 2016 To August 2021</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Dr. Arvind R. Bajaj</td>
+            <td>M.Sc., Ph.D.</td>
+            <td>Sept 2021 To Cont… till date</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Courses Page Content -->
+  <div id="courses-page" class="courses animated">
+    <h2>Courses Offered</h2>
+    <p>Explore the wide range of courses offered at our institution to shape your future.</p>
+
+    <!-- Courses Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>About Course</th>
+          <th>Subjects</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bachelor of Science in Chemistry</td>
+          <td>Bachelor of Science in Chemistry. Master of Chemistry in Organic Chemistry (2 Year Program).</td>
+          <td>Chemistry, Organic Chemistry, Inorganic Chemistry, Physical Chemistry</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Science in Physics</td>
+          <td>About Bachelor of Science in Physics.</td>
+          <td>Physics, Applied Physics, Mathematical Physics</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Science in Mathematics</td>
+          <td>In F.Y.B.Sc Semester 1, we have given Mathematics in 2 papers (MTH-101 & MTH-102). Similarly in Semester 2, students are given Mathematics in 2 papers (MTH-201 & MTH-202).</td>
+          <td>Mathematics, Applied Mathematics, Statistics</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Science in Statistics</td>
+          <td>BSc Statistics is a discipline that focuses on gathering, organizing, analyzing, interpreting, and presenting data. It offers specialization in statistics and excellent job opportunities in the government and private sectors.</td>
+          <td>Statistics, Probability, Data Analysis</td>
+        </tr>
+        <tr>
+          <td>Botany</td>
+          <td>In Botany department F.Y.B.Sc Division -1 group CPB.</td>
+          <td>Botany, Plant Biology, Ecology</td>
+        </tr>
+        <tr>
+          <td>Master of Science in Chemistry (GiA/SF)</td>
+          <td>About Master of Science in Chemistry.</td>
+          <td>Advanced Chemistry, Research Methods</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Arts in Gujarati</td>
+          <td>About Bachelor of Arts in Gujarati.</td>
+          <td>Gujarati Literature, Linguistics</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Arts in Hindi</td>
+          <td>Hindi is the most commonly spoken language in India. It is the second most spoken language in the world, after Chinese. Hindi is widely written, spoken, and understood.</td>
+          <td>Hindi Literature, Linguistics</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Arts in Economics</td>
+          <td>It is a course focused on the core fundamentals of Economics, its theories, and applications. It covers both qualitative and quantitative courses in Economics.</td>
+          <td>Microeconomics, Macroeconomics, Econometrics</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Arts in English (SF)</td>
+          <td>A Bachelor of Arts in English is a relevant and flexible undergraduate degree that leads to numerous career paths. In this new information age, collecting, reading, and writing about complex information is essential.</td>
+          <td>English Literature, Creative Writing</td>
+        </tr>
+        <tr>
+          <td>History</td>
+          <td>About History Course.</td>
+          <td>Ancient History, Modern History</td>
+        </tr>
+        <tr>
+          <td>Psychology</td>
+          <td>About Psychology.</td>
+          <td>General Psychology, Clinical Psychology</td>
+        </tr>
+        <tr>
+          <td>Sanskrit</td>
+          <td>About Sanskrit.</td>
+          <td>Sanskrit Literature, Linguistics</td>
+        </tr>
+        <tr>
+          <td>National Service Scheme (NSS)</td>
+          <td>About National Service Scheme (NSS). NSS Programme Officers: 1. Prof. R.H. Desai 2. Prof. K.M. Mayatra 3. Prof. P.L. Lad</td>
+          <td>Social Service, Community Development</td>
+        </tr>
+        <tr>
+          <td>National Cadet Corps (NCC)</td>
+          <td>About National Cadet Corps (NCC).</td>
+          <td>Military Training, Leadership</td>
+        </tr>
+        <tr>
+          <td>Library</td>
+          <td>V.S. Patel College library was established in 1961. Right from a modest beginning in the year 1961 with 1,000 books and 3 periodicals in the temporary building, it has now been transferred to the existing new building.</td>
+          <td>Library Science, Information Management</td>
+        </tr>
+        <tr>
+          <td>Sports</td>
+          <td>Along with sports, NCC (Army) is actively run and continuously inspired by BVKM in this institution.</td>
+          <td>Physical Education, Sports Management</td>
+        </tr>
+        <tr>
+          <td>Office</td>
+          <td>About Back Office.</td>
+          <td>Office Management, Administration</td>
+        </tr>
+        <tr>
+          <td>Diploma in Nursing Assistant</td>
+          <td>Diploma in Nursing Assistant is affiliated with the National Council of Paramedical, Delhi. Course Duration: 1 Year & 2 Years.</td>
+          <td>Nursing, Patient Care</td>
+        </tr>
+        <tr>
+          <td>Diploma in Medical Laboratory Technology</td>
+          <td>Diploma in Medical Laboratory Technology is affiliated with the National Council of Paramedical, Delhi. Course Duration: 1 Year & 2 Years.</td>
+          <td>Laboratory Techniques, Medical Diagnostics</td>
+        </tr>
+        <tr>
+          <td>Diploma in General Healthcare & Maternity Assistant</td>
+          <td>Diploma in General Healthcare & Maternity Assistant is affiliated with the National Council of Paramedical, Delhi. Course Duration: 1 Year & 2 Years.</td>
+          <td>Healthcare, Maternity Care</td>
+        </tr>
+        <tr>
+          <td>Diploma in X-Ray Technology</td>
+          <td>Diploma in X-Ray Technology is affiliated with the National Council of Paramedical, Delhi. Course Duration: 1 Year & 2 Years.</td>
+          <td>Radiology, Imaging Techniques</td>
+        </tr>
+        <tr>
+          <td>Diploma in Dialysis Therapy</td>
+          <td>Diploma in Dialysis Therapy is affiliated with the National Council of Paramedical, Delhi. Course Duration: 1 Year & 2 Years.</td>
+          <td>Dialysis Techniques, Patient Care</td>
+        </tr>
+        <tr>
+          <td>Bachelor of Science in Microbiology (SFI)</td>
+          <td>The objectives of a Bachelor of Microbiology program typically include: 1. Understanding Microbial Life 2. Disease Mechanisms 3. Laboratory Skills 4. Biotechnological Applications 5. Environmental Microbiology.</td>
+          <td>Microbiology, Immunology, Biotechnology</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Facilities Page Content -->
+  <div id="facilities-page" class="facilities animated">
+    <h2>Facilities</h2>
+    <p>Our college provides state-of-the-art facilities to ensure a conducive learning environment.</p>
+    <ul>
+      <li>Well-equipped laboratories</li>
+      <li>Library with a vast collection of books</li>
+      <li>Sports facilities including a gym and playground</li>
+      <li>Hostel accommodation for students</li>
+      <li>Wi-Fi enabled campus</li>
+      <li>Cafeteria with healthy food options</li>
+    </ul>
+
+    <!-- Faculty Details -->
+    <h2>Faculty Members</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Designation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dr. Arvind Ramnarain Bajaj</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Naranbhai Nathabhai Amin</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Jayantkumar Ramanlal Patel</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Firoz Ismail Kapadia</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Dipesh Babubhai Patel</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Bhavesh Harshvadan Devta</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Jignesh Subhashchandra Desai</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Ranjanben Haribhai Desai</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Gitaben Dahyabhai Patel</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Kishor Malabhai Mayatra</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Pragna Praksh Desai</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Kamleshkumar Dineshchandra Prajapati</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Riteshkumar Dinkerrai Naik</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Devang Zinabhai Sukani</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Pramodkumar Laxmanbhai Lad</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Divya B Patel</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Gamit Yogita Bhagubhai</td>
+          <td>Associate Professor</td>
+        </tr>
+        <tr>
+          <td>Sudha Natvarsinh Solanki</td>
+          <td>Assistant Professor</td>
+        </tr>
+        <tr>
+          <td>Preranaben Ramniklal Thakor</td>
+          <td>Assistant Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Aruna Natverbhai Solanki</td>
+          <td>Assistant Professor</td>
+        </tr>
+        <tr>
+          <td>Ushaben B Patel</td>
+          <td>Assistant Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Lopa Mukeshbhai Patel</td>
+          <td>Assistant Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Sejal Soham Naik</td>
+          <td>Assistant Professor</td>
+        </tr>
+        <tr>
+          <td>Dr. Ajay Ashvinbhai Majethiya</td>
+          <td>Assistant Professor</td>
+        </tr>
+        <tr>
+          <td>Mrunal Balvantray Patel</td>
+          <td>Assistant Professor (Adhyapak Sahayak)</td>
+        </tr>
+        <tr>
+          <td>Dr. Divyesh Rajendrabhai Solanki</td>
+          <td>Assistant Professor (Adhyapak Sahayak)</td>
+        </tr>
+        <tr>
+          <td>Dr. Tejas Sanjay Gandhi</td>
+          <td>Assistant Professor (Adhyapak Sahayak)</td>
+        </tr>
+        <tr>
+          <td>Dr. Toralkumari Ishwarbhai Patel</td>
+          <td>Assistant Professor (Adhyapak Sahayak)</td>
+        </tr>
+        <tr>
+          <td>Dr. Vikrant Thakorbhai Patel</td>
+          <td>Assistant Professor (Adhyapak Sahayak)</td>
+        </tr>
+        <tr>
+          <td>Dr. Kavitakumari Bhikhubhai Patel</td>
+          <td>Assistant Professor (Adhyapak Sahayak)</td>
+        </tr>
+        <tr>
+          <td>Dr. Pratixabahen Kantilal Patel</td>
+          <td>Assistant Professor (Adhyapak Sahayak)</td>
+        </tr>
+        <tr>
+          <td>Anamika Malay Desai</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Sangeeta Kamleshbhai Sharma</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Renuka B Solanki</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Dr. Vaishali Dhirubhai Patel</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Zeel Prakashbhai Panchal</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Kiran Kirtibhai Solanki</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Riya D Desai</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Kalpanaben Hiteshbhai Ahir</td>
+          <td>Adhoc - Teacher</td>
+        </tr>
+        <tr>
+          <td>Kaminiben Bhagubhai Patel</td>
+          <td>Nursing Tutor</td>
+        </tr>
+        <tr>
+          <td>Eva Ishvarbhai Patel</td>
+          <td>Nursing Tutor</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Non-Teaching Staff Details -->
+    <h2>Non-Teaching Staff</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Designation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aratikumari Yashvantray Patel</td>
+          <td>Lab Assistant</td>
+        </tr>
+        <tr>
+          <td>Manojkumar Ramanbhai Patel</td>
+          <td>Senior Clerk</td>
+        </tr>
+        <tr>
+          <td>Jaysukhbhai R Patel</td>
+          <td>Senior Clerk</td>
+        </tr>
+        <tr>
+          <td>Snehlata Pradip Patel</td>
+          <td>Adhoc Clerk</td>
+        </tr>
+        <tr>
+          <td>Hiren Sureshbhai Patel</td>
+          <td>Adhoc Clerk</td>
+        </tr>
+        <tr>
+          <td>Dr. Digvijaysinh Jasvantsinh Chauhan</td>
+          <td>Librarian</td>
+        </tr>
+        <tr>
+          <td>Anjali Pravinbhai Rana</td>
+          <td>Adhoc Lab Assistant</td>
+        </tr>
+        <tr>
+          <td>Parth Bhupendrabhai Panchal</td>
+          <td>Adhoc Lab Assistant</td>
+        </tr>
+        <tr>
+          <td>Nareshkumar Dineshbhai Rathod</td>
+          <td>Adhoc Lab Assistant</td>
+        </tr>
+        <tr>
+          <td>Jitendra M Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Bhikhu Natubhai Halpati</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Chandubhai B Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Narendra B Ahir</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Sanjaybhai Shankarbhai Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Ranjit Dhirubhai Rathod</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Parabhubhai Bavabhai Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Kalpeshbhai Chotubhai Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Ankur A Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Ajaybhai Babubhai Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Manoj Uttambhai Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Niraj B Patel</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Dhruv Mistry</td>
+          <td>Adhoc Peon</td>
+        </tr>
+        <tr>
+          <td>Dineshbhai Suryanath Tiwari</td>
+          <td>Adhoc Watchman</td>
+        </tr>
+        <tr>
+          <td>Pratikkumar Vanmalibhai Patel</td>
+          <td>Adhoc Clerk</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Registration Form Content -->
+  <div id="registration-page" class="registration animated">
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="course">Select Course:</label>
+      <select id="course" name="course" required>
+        <option value="">Choose a course</option>
+        <option value="BSc Chemistry">BSc Chemistry</option>
+        <option value="BSc Physics">BSc Physics</option>
+        <option value="BSc Mathematics">BSc Mathematics</option>
+        <option value="BSc Statistics">BSc Statistics</option>
+        <option value="BA Gujarati">BA Gujarati</option>
+        <option value="BA Hindi">BA Hindi</option>
+        <option value="BA Economics">BA Economics</option>
+        <option value="BA English">BA English</option>
+      </select>
+
+      <label for="message">Message (Optional):</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Contact Us Page Content -->
+  <div id="contact-page" class="contact-page animated">
+    <h2>Contact Us</h2>
+    <p>Get in touch with us for any queries or information.</p>
+
+    <!-- Top Section: Map and Details -->
+    <div class="top-section">
+      <!-- Map -->
+      <div class="map-container">
+        <h3>Reach Us</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.123456789012!2d72.98765432101234!3d20.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0c123456789ab%3A0x1234567890abcdef!2sV.%20S.%20Patel%20College%20of%20Arts%20%26%20Science%2C%20Bilimora!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- College Details -->
+      <div class="contact-details">
+        <p><strong>V. S. Patel College of Arts & Science, Bilimora</strong></p>
+        <p><strong>Principal Name:</strong> Prof. Arvind R. Bajaj</p>
+        <p><strong>Address:</strong> College Campus, Morarji Desai Marg, Po-Antalia, Via-Bilimora, Ta-Gandevi, Di-Navsari, Gujarat-396325</p>
+        <p><strong>Phone:</strong> +91-2634-283820</p>
+        <p><strong>Email:</strong> <a href="mailto:vspc1961@gmail.com">vspc1961@gmail.com</a></p>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2023 VS Patel College Portal. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showHome() {
+      document.getElementById('home-page').style.display = 'block';
+      document.getElementById('about-page').style.display = 'none';
+      document.getElementById('courses-page').style.display = 'none';
+      document.getElementById('facilities-page').style.display = 'none';
+      document.getElementById('registration-page').style.display = 'none';
+      document.getElementById('contact-page').style.display = 'none';
+    }
+
+    function showAbout() {
+      document.getElementById('home-page').style.display = 'none';
+      document.getElementById('about-page').style.display = 'block';
+      document.getElementById('courses-page').style.display = 'none';
+      document.getElementById('facilities-page').style.display = 'none';
+      document.getElementById('registration-page').style.display = 'none';
+      document.getElementById('contact-page').style.display = 'none';
+    }
+
+    function showCourses() {
+      document.getElementById('home-page').style.display = 'none';
+      document.getElementById('about-page').style.display = 'none';
+      document.getElementById('courses-page').style.display = 'block';
+      document.getElementById('facilities-page').style.display = 'none';
+      document.getElementById('registration-page').style.display = 'none';
+      document.getElementById('contact-page').style.display = 'none';
+    }
+
+    function showFacilities() {
+      document.getElementById('home-page').style.display = 'none';
+      document.getElementById('about-page').style.display = 'none';
+      document.getElementById('courses-page').style.display = 'none';
+      document.getElementById('facilities-page').style.display = 'block';
+      document.getElementById('registration-page').style.display = 'none';
+      document.getElementById('contact-page').style.display = 'none';
+    }
+
+    function showRegistration() {
+      document.getElementById('home-page').style.display = 'none';
+      document.getElementById('about-page').style.display = 'none';
+      document.getElementById('courses-page').style.display = 'none';
+      document.getElementById('facilities-page').style.display = 'none';
+      document.getElementById('registration-page').style.display = 'block';
+      document.getElementById('contact-page').style.display = 'none';
+    }
+
+    function showContact() {
+      document.getElementById('home-page').style.display = 'none';
+      document.getElementById('about-page').style.display = 'none';
+      document.getElementById('courses-page').style.display = 'none';
+      document.getElementById('facilities-page').style.display = 'none';
+      document.getElementById('registration-page').style.display = 'none';
+      document.getElementById('contact-page').style.display = 'block';
+    }
+
+    // Show Home Page by default
+    showHome();
+
+    // JavaScript for Registration Form Validation
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const course = document.getElementById('course').value;
+
+      if (fullName && email && phone && course) {
+        alert('Registration submitted successfully!');
+        document.getElementById('registrationForm').reset();
+      } else {
+        alert('Please fill out all required fields.');
+      }
+    });
+
+    // JavaScript for Contact Form Validation
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        alert('Form submitted successfully!');
+        document.getElementById('contactForm').reset();
+      } else {
+        alert('Please fill out all fields.');
+      }
+    });
+  </script>
+</body>
+</html>
